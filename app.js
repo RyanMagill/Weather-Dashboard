@@ -60,21 +60,26 @@ function getWeather(city){
         url: fURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
         var dateTime = (" " + moment(response.list[0].dt, "X").format("MM/DD/YYYY"));
         var dateArray = [];
-        dateArray = response.list;
-
-        $(dateArray).each(function(index, element){
-            console.log("test");
-            getForecast(dateTime, response);
-        });
+        dateArray[0] = document.getElementById("card1");
+        dateArray[1] = document.getElementById("card2");
+        dateArray[2] = document.getElementById("card3");
+        dateArray[3] = document.getElementById("card4");
+        dateArray[4] = document.getElementById("card5");
+        console.log(dateArray);
         function getForecast(dateTime, response){
             $("#dateFive").text(dateTime);
             $("#tempFive").append(response.list.main.temp);
             $("#iconFive").append("<img src=\"http://openweathermap.org/img/w/" + response.list.weather.icon + ".png\">");
             $("#humidityFive").text(response.list.main.humidity);
         }
+        console.log(response);
+
+        dateArray.foreach((dateTime, response) =>{
+            getForecast(dateTime, response);
+        });
+        
     }); 
 }
 
