@@ -1,0 +1,12 @@
+.hide {
+    display: none;
+}
+.greenUV{
+    background-color: green;
+}
+.yellowUV{
+    background-color: yellow;
+}
+.redUV{
+    background-color: red;
+}
